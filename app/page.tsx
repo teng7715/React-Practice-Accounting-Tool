@@ -1,95 +1,105 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';  //>用來明確指定這個component是Client端的component
+
+import styled from 'styled-components';
+import Link from 'next/link';
+
+
+const Main=styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+`;
+
+
+const Title=styled.h1`
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1rem;
+`;
+
+
+const Button=styled.button`
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #0070f3;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #005bb5;
+  }
+`;
+
+
+const FormContainer=styled.section`
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+  width: 300px;
+`;
+
+
+const Form=styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+
+const Label = styled.label`
+  margin-bottom: 0.5rem;
+  color: #666;
+`;
+
+
+const Input = styled.input`
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <Main>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <Title>React 練習專案</Title>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+      <Link href="/accounting" passHref>
+        <Button type="button">
+          不登入/註冊，立即開始試用記帳小工具
+        </Button>
+      </Link>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+      <FormContainer>
+          <Title>登入系統</Title>
+          <Form>
+            <Label>電子郵件</Label>
+            <Input type="email" placeholder="test@example.com" />
+            <Label>密碼</Label>
+            <Input type="password" />
+            <Button type="submit">登入</Button>
+          </Form>
+      </FormContainer>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
+      <FormContainer>
+          <Title>註冊帳戶</Title>
+          <Form>
+            <Label>電子郵件</Label>
+            <Input type="email" placeholder="test@example.com" />
+            <Label>密碼</Label>
+            <Input type="password" />
+            <Button type="submit">註冊</Button>
+          </Form>
+      </FormContainer>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </Main>
   );
 }
